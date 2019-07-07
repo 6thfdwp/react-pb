@@ -13,7 +13,7 @@ const initState = {
 const reducerFn = (state, action) => {
   // console.log(action.type);
 
-  if (action.type == 'CLEAR_PB_RESULT') {
+  if (action.type === 'CLEAR_PB_RESULT') {
     return { ...state, ...initState };
   }
   return { ...state, ...action.payload };
