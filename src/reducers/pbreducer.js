@@ -6,12 +6,12 @@ import { useState, useReducer } from 'react';
 
 const initState = {
   pending: false,
-  // initial primary number array are all undefined
+  // initial primary number array (size 7) are all undefined
   data: { primaryNums: Array.from({ length: 7 }), secondaryNums: [undefined] },
   error: null
 };
 const reducerFn = (state, action) => {
-  console.log(action.type);
+  // console.log(action.type);
 
   if (action.type == 'CLEAR_PB_RESULT') {
     return { ...state, ...initState };

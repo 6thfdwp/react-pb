@@ -80,9 +80,10 @@ body {
 
 .pb-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 20px;
+  width: 100%;
 }
 .pb-circle {
   display: flex;
@@ -93,24 +94,23 @@ body {
   width: 28px;
   border-radius: 18px;
   border: #e0e0e0 1px solid;
-  margin: 0 3px;
+  /* margin: 0 3px; */
 }
 .pb-circle.filled {
   background-color: #3949ab;
   font-weight: 700;
 }
-.pb-circle.secondary-filled {
-  background-color: #78909c;
+.pb-circle.secondary {
+  color: #000;
   font-weight: 700;
+}
+.pb-circle.secondary.filled {
+  background-color: #78909c;
+  color: #fff;
 }
 
 .pb-btn {
-  color: #fff;
-  border: #eee 1px solid;
-  border-radius: 18px;
-  /* margin-left: 15px; */
-  height: 30px;
-  width: 30px;
+  cursor: pointer;
 }
 .pb-btn i {
   font-size: 14px;
@@ -125,20 +125,18 @@ body {
 }
 @media (min-width: 576px) {
   .pb-row {
-    align-self: flex-end;
+    /* align-self: flex-end; */
+    width: 680px;
   }
   .pb-circle {
     height: 40px;
     width: 40px;
     border-radius: 22px;
-    margin: 0 10px;
+    /* margin: 0 10px; */
   }
   .pb-btn {
-    border-radius: 22px;
     font-size: 18px;
     margin-left: 15px;
-    height: 40px;
-    width: 40px;
   }
   .pb-btn.draw {
     margin-left: 50px;
