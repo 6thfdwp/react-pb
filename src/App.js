@@ -1,24 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useReducer } from 'react';
 import './App.css';
 
-function App() {
+import PBCircles from './ui/PBCircles';
+import PrimaryGrid from './ui/PrimaryGrid';
+import SecondaryGrid from './ui/SecondaryGrid';
+
+import { fetchLatestDraw } from './api/pb';
+import { usePBReducer } from './reducers/pbreducer';
+
+function Separator() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        backgroundColor: '#78909C',
+        color: '#fff',
+        fontWeight: 'bold',
+        paddingTop: 5,
+        paddingBottom: 5,
+        textAlign: 'center',
+        textTransform: 'uppercase'
+      }}>
+      Select your Powerball
+    </div>
+  );
+}
+
+function App() {
+  const [state, dispatch] = usePBReducer();
+  const { primaryNums, secondaryNums } = state.data;
+  // console.log(state);
+
+  return (
+    <div className="app">
+      <PBCircles
+        primaryNums={primaryNums}
+        secondaryNums={secondaryNums}
+        onFill={() => fetchLatestDraw(dispatch)}
+        onClear={() => dispatch({ type: 'CLEAR_PB_RESULT' })}
+      />
+      <div className="grid-container">
+        <PrimaryGrid seq={35} primaryNums={primaryNums} />
+
+        <Separator />
+        <SecondaryGrid seq={20} secondaryNums={secondaryNums} />
+      </div>
     </div>
   );
 }
